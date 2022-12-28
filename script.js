@@ -8,33 +8,33 @@ function getComputerChoice() {
      return computerSelection;
 }
 let result;
-
+console.log(result);
 function playRound(playerSelection, computerSelection) {
-    
+     
     if (playerSelection === "rock" && computerSelection === "scissors") {
         result = "You win! Rock beats Scissors";
-        console.log;("You win.");
+        playerScore++;
     }else if (playerSelection === "scissors" && computerSelection === "rock") {
         result = "You lose! Rock beats Scissors";
-        console.log("You lose.");
+        computerScore++;
     }else if (playerSelection === "paper" && computerSelection === "rock") {
         result = "You win! Paper beats rock";
-        console.log("You win.");
+        playerScore++;
     }else if (playerSelection === "rock" && computerSelection === "paper") {
         result = "You lose! Paper beats rock "; 
-        console.log("You lose.");
+        computerScore++;
     }else if (playerSelection === "scissors" && computerSelection === "paper") {
         result = "You win! Scissors beats paper";
-        console.log("You win.");
+        playerScore++;
     }else if (playerSelection === "paper" && computerSelection === "scissors") {
         result = "You lose! Scissors beats paper"; 
-        console.log("You lose.");
+        computerScore++;
     }else if (playerSelection === computerSelection) {
         result = "Its a draw!";
-        console.log("Tie");
-    }else result = null, console.log("Enter a valid option.") ;
-
+    }else console.log("Enter a valid option.");
+    
     return result;
+    
     // output will return a string that declares the winner of the round like "You lose! Paper beats Rock"
     // playerSelection will be case-insensitive 
     //reurn the results of the function
@@ -43,17 +43,35 @@ function playRound(playerSelection, computerSelection) {
 
 let computerSelection = getComputerChoice();
 console.log(computerSelection);
+
 let userInput = prompt("Enter rock, paper, or scissors", "");
 let playerSelection = userInput.toLowerCase();
+console.log(playerSelection);
 
-console.log(playRound(playerSelection, computerSelection));
+let playerScore = 0;
+let computerScore =0;
 
+function game() {
+    for (let i = 0; i < 5; i++) {
+        /** What is happening:
+         * The game prompts me to enter rps
+         * The machine takes the player and the computer arguments and puts them into the function.
+         * The function will set a variable to a string that matches the result and then will log that result. 
+         * The result is then console.logged 5 times in a row.
+         * Problem:
+         * In the for loop, the SAME result is logged 5 times because the entire function is not restarting, the executables in the if loop, inside of the function, are repeating.
+         * Question: How can we restart a function? or Why is my if loop inside my function repeating in my for loop? or How to escape if loops?
+         * Asnwer: I need to keep track of player scores. I missed this in the prompt. 
+         */
+         console.log(playRound(playerSelection, computerSelection));
 
-
-/**
-function game(let i = 0; i < 5; i++) {
-    //loop the single round of rock paper scissors 
+         
+    }
+    
+    //loop the single round of rock paper scissors
+    //keeps score
+    // reports a wonner or loser at the end
 }
 
+game();
 //use prompt to get input from the user
-*/
