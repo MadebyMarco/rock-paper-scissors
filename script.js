@@ -8,9 +8,9 @@ function getComputerChoice() {
      return computerSelection;
 }
 let result;
-console.log(result);
+
 function playRound(playerSelection, computerSelection) {
-     
+
     if (playerSelection === "rock" && computerSelection === "scissors") {
         result = "You win! Rock beats Scissors";
         playerScore++;
@@ -41,19 +41,35 @@ function playRound(playerSelection, computerSelection) {
     //console.log() the result of each round and the winner at the end
 }
 
-let computerSelection = getComputerChoice();
-console.log(computerSelection);
 
-let userInput = prompt("Enter rock, paper, or scissors", "");
-let playerSelection = userInput.toLowerCase();
-console.log(playerSelection);
+
+
+
 
 let playerScore = 0;
-let computerScore =0;
+let computerScore = 0;
+let gameScore = playerScore + computerScore;
+
+
 
 function game() {
     for (let i = 0; i < 5; i++) {
-        /** What is happening:
+            console.log("A new round has begun. Rock, paper, scissors, SHOOT!");
+        //Fetching user input
+        let userInput = prompt("Enter rock, paper, or scissors", "");
+        let playerSelection = userInput.toLowerCase();
+        //Fetching computer input
+        let computerSelection = getComputerChoice();
+        
+            console.log(playRound(playerSelection, computerSelection));
+        
+         
+    } 
+    //loop the single round of rock paper scissors
+    //keeps score
+    //reports a winner or loser at the end
+
+    /** What is happening:
          * The game prompts me to enter rps
          * The machine takes the player and the computer arguments and puts them into the function.
          * The function will set a variable to a string that matches the result and then will log that result. 
@@ -63,14 +79,7 @@ function game() {
          * Question: How can we restart a function? or Why is my if loop inside my function repeating in my for loop? or How to escape if loops?
          * Asnwer: I need to keep track of player scores. I missed this in the prompt. 
          */
-         console.log(playRound(playerSelection, computerSelection));
-
-         
-    }
-    
-    //loop the single round of rock paper scissors
-    //keeps score
-    // reports a wonner or loser at the end
+   
 }
 
 game();
