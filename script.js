@@ -11,27 +11,33 @@ let result;
 
 let playerScore = 0;
 let computerScore = 0;
-let gameScore = playerScore + computerScore;
+let gameScore = 0;
 
 function playRound(playerSelection, computerSelection) {
      
     if (playerSelection === "rock" && computerSelection === "scissors") {
-        result = "You win! Rock beats Scissors";
+        result = playerScore++, gameScore++;
+        console.log("You win! Rock beats Scissors");
     }else if (playerSelection === "scissors" && computerSelection === "rock") {
-        result = "You lose! Rock beats Scissors";
+        result = computerScore++, gameScore++;
+        console.log("You lose! Rock beats Scissors");
     }else if (playerSelection === "paper" && computerSelection === "rock") {
-        result = "You win! Paper beats rock"; 
+        result = playerScore++, gameScore++;
+        console.log("You win! Paper beats rock"); 
     }else if (playerSelection === "rock" && computerSelection === "paper") {
-        result = "You lose! Paper beats rock ";     
+        result = computerScore++, gameScore++;
+        console.log("You lose! Paper beats rock");     
     }else if (playerSelection === "scissors" && computerSelection === "paper") {
-        result = "You win! Scissors beats paper";      
+        result = playerScore++, gameScore++;
+        console.log("You win! Scissors beats paper");      
     }else if (playerSelection === "paper" && computerSelection === "scissors") {
-        result = "You lose! Scissors beats paper";      
+        result = computerScore++, gameScore++;
+        console.log("You lose! Scissors beats paper");      
     }else if (playerSelection === computerSelection) {
-        result = "Its a draw!";
+        result = gameScore++;
+        console.log("Its a draw!");
     }
 
-    console.log(result);
     return result;
    
     
@@ -40,6 +46,8 @@ function playRound(playerSelection, computerSelection) {
     //reurn the results of the function
     //console.log() the result of each round and the winner at the end
 }
+
+
 
 function game() {
     for (let i = 0; i < 5; i++) {
@@ -51,6 +59,12 @@ function game() {
         let computerSelection = getComputerChoice();
         playRound(playerSelection, computerSelection);
     } 
+
+    if (gameScore === 5 && playerScore > computerScore) {
+        console.log("You win! Refresh to play again");
+    } else if (gameScore === 5 && playerScore < computerScore) {
+        console.log("You lose! Refresh to try again");
+    }
 }   //use prompt to get input from the user
     //loop the single round of rock paper scissors
     //keeps score
