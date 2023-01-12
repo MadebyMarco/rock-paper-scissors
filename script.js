@@ -1,12 +1,13 @@
 let computerOptions = ["rock", "paper", "scissors"];
 
 
-let computerSelection = getComputerChoice();
+let computerSelection;
 
 function getComputerChoice() {
      //randomly return either rock paper or scissors for the computer to use against you)
-     let output = computerOptions[Math.floor(Math.random() * computerOptions.length)]
-     return output;
+     
+     computerSelection = computerOptions[Math.floor(Math.random() * computerOptions.length)]
+     
 }
 let result;
 
@@ -16,6 +17,7 @@ let gameScore = 0;
 
 function playRound(playerSelection, computerSelection) {
      //switch console.log to div.textContent or similar
+
     if (playerSelection === "rock" && computerSelection === "scissors") {
         result = playerScore++, gameScore++;
         console.log("You win! Rock beats Scissors");
@@ -70,16 +72,21 @@ function game() {
     //reports a winner or loser at the end
 let playerSelection;
 
-function getPlayerChoice(){
-    const buttonId = document.querySelectorAll('.playerChoice');
-    button
+function getPlayerChoice(e){
+    playerSelection = e.target.getAttribute('data-name');
 };
 
 const buttons = document.querySelectorAll('button');
-buttons.forEach(button => button.addEventListener('click', getPlayerChoice, playRound(playerSelection, computerSelection)));
+buttons.forEach(button => button.addEventListener('click', function(e) {
+    playerSelection = e.target.getAttribute('data-name')
+    getComputerChoice();
+}, () => playRound(playerSelection, computerSelection)));
+//playRound(playerSelection = button.getAttribute('data-name'), computerSelection)));
 
 
-
+//Goal: Clicking on one button will set the player's choice to it. If I click on rock, playerSelection should = rock
+//First I will need to know how to select all the buttons and put them into a variable
+//Second I will 
 
 
 //change all console.logs into dom methods
