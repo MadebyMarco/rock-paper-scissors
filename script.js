@@ -15,7 +15,7 @@ let computerScore = 0;
 let resultDiv = document.querySelector('.results');
 let playerScoreDiv = document.querySelector('.playerScore');
 let computerScoreDiv = document.querySelector('.computerScore');
-
+let scoresDiv = document.querySelector('.scores');
 
 function playRound(playerSelection, computerSelection) {
      //switch console.log to div.textContent or similar
@@ -43,6 +43,8 @@ function playRound(playerSelection, computerSelection) {
         resultDiv.textContent = "Its a draw!";
     }
 
+    playerScoreDiv.textContent = `Your score: ${playerScore}`;
+    computerScoreDiv.textContent = `Computer score: ${computerScore}`;
     return result;
    
     
@@ -88,15 +90,15 @@ buttons.forEach(button => button.addEventListener('click', function(e) {
     playRound(playerSelection, computerSelection);
 
     if (playerScore == 5) {
+        playerScore = 0;
+        computerScore = 0;
         resultDiv.textContent = "Congratultions, you won! Click to play again!";
-        playerScore = 0;
-        computerScore = 0;
+        
     } else if (computerScore == 5) {
-        resultDiv.textContent = "You lost! Click to try again!";
         playerScore = 0;
         computerScore = 0;
+        resultDiv.textContent = "You lost! Click to try again!";
     };
-    console.log(playerScore, computerScore);
 
 }));
 //playRound(playerSelection = button.getAttribute('data-name'), computerSelection)));
