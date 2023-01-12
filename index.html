@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 <head>
     <meta charset="UTF-8">
     <script src="script.js" defer></script>
 </head>
-<body>
+<body style="display: flex; flex-direction: column; gap: 50px; align-items: center; justify-content: center; height: 100%;">
     <div class="buttons">
         <button data-name = "rock" class="playerChoice">Rock</button>
         <button data-name = "paper" class="playerChoice">paper</button>
         <button data-name = "scissors" class="playerChoice">Scissors</button>
     </div>
-    <div class="results"> Results shown here
+    <div class="results"> Click a button to start. First to five wins!
+        
+    </div>
+    <div style ="display: flex; gap: 20px;" class="scores"> 
+    <div class="playerScore">Your score:</div>
+    <div class="computerScore">Computer score:</div>
     </div>
 </body>
 </html>
