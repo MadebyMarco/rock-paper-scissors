@@ -13,14 +13,15 @@ let result;
 let playerScore = 0;
 let computerScore = 0;
 let resultDiv = document.querySelector('.results');
+let playerScoreDiv = document.querySelector('.playerScore');
+let computerScoreDiv = document.querySelector('.computerScore');
+
 
 function playRound(playerSelection, computerSelection) {
      //switch console.log to div.textContent or similar
     
     if (playerSelection === "rock" && computerSelection === "scissors") {
         result = playerScore++;
-        
-        resultDiv.textContent = 
         resultDiv.textContent = "You win! Rock beats Scissors";
     }else if (playerSelection === "scissors" && computerSelection === "rock") {
         result = computerScore++;
@@ -50,13 +51,15 @@ function playRound(playerSelection, computerSelection) {
     //reurn the results of the function
     //console.log() the result of each round and the winner at the end
 }
+/**
+ * 
 
 function game() {
    // for (let i = 0; i < 5; i++) {
             console.log("A new round has begun. Rock, paper, scissors, SHOOT!"); //create in js
         //Fetching user input
-        //let userInput = prompt("Enter rock, paper, or scissors", ""); //create div in js 
-        //let playerSelection = userInput.toLowerCase().trim();
+        let userInput = prompt("Enter rock, paper, or scissors", ""); //create div in js 
+        let playerSelection = userInput.toLowerCase().trim();
         //Fetching computer input
         let computerSelection = getComputerChoice();
         playRound(playerSelection, computerSelection);
@@ -68,7 +71,7 @@ function game() {
         console.log("You lose! Refresh to try again");//create div in js 
     }
 };   //use prompt to get input from the user
-    //loop the single round of rock paper scissors
+ */    //loop the single round of rock paper scissors
     //keeps score
     //reports a winner or loser at the end
 let playerSelection;
@@ -81,8 +84,20 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach(button => button.addEventListener('click', function(e) {
     playerSelection = this.getAttribute('data-name')
     getComputerChoice();
-    console.log(playerScore, computerScore);
+    
     playRound(playerSelection, computerSelection);
+
+    if (playerScore == 5) {
+        resultDiv.textContent = "Congratultions, you won! Click to play again!";
+        playerScore = 0;
+        computerScore = 0;
+    } else if (computerScore == 5) {
+        resultDiv.textContent = "You lost! Click to try again!";
+        playerScore = 0;
+        computerScore = 0;
+    };
+    console.log(playerScore, computerScore);
+
 }));
 //playRound(playerSelection = button.getAttribute('data-name'), computerSelection)));
 
